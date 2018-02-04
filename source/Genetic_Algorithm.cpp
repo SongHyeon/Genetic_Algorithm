@@ -9,7 +9,7 @@ Gene& Gene::operator=(Gene &r){
 
 void Genetic_Algorithm::start(const char * filename){
 	int generation = 1,wirte_cnt=0;
-	char output[] = "..\\output\\generation_000000.dib";
+	char output[] = "output\\generation_000000.dib";
 	void (*rename)(char *,int ) = [](char * output,int generation){
 		int idx = 23;
 		while(generation){
@@ -20,9 +20,9 @@ void Genetic_Algorithm::start(const char * filename){
 	};
 
 	Initialize(filename);
-	source.Write_BMP("..\\output\\Edge_Detection.dib");
+	source.Write_BMP("output\\Edge_Detection.dib");
 
-	FILE *ptr = fopen("..\\output\\out.txt","w");
+	FILE *ptr = fopen("output\\out.txt","w");
 
 		//Loop
 	do{
@@ -129,11 +129,7 @@ void Genetic_Algorithm::Mutation(){
 		for(j=0;j<LINE_NUM;j++){
 			if(rand()%(int)(100/MUTATION_PERSENTAGE)==0){
 				gene[i][j].x = rand()%W;
-			}
-			if(rand()%(int)(100/MUTATION_PERSENTAGE)==0){
 				gene[i][j].y = rand()%H;
-			}
-			if(rand()%(int)(100/MUTATION_PERSENTAGE)==0){
 				gene[i][j].degree = rand()%360;
 			}
 		}
